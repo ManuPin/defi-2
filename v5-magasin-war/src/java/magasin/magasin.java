@@ -7,6 +7,7 @@ package magasin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +36,7 @@ public class magasin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            long number = 1;
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -42,9 +44,19 @@ public class magasin extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet magasin at " + request.getContextPath() + "</h1>");
-            FacadeBean.init();
+//            FacadeBean.init();
             out.println("<h1>Servlet magasin at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Servlet magasin at " + request.getContextPath() + "</h1>");
+            FacadeBean.rechercheProduitId(number);
+            out.println("<h1>Servlet magasin at " + FacadeBean.rechercheProduitId(number).getNom() + "</h1>");
+            List<Produit> produit = FacadeBean.ensembleProduit();
+            
+        out.println(" <style>table,th,td{border : 1px solid black;border-collapse:collapse;}</style> <table style=\"width:100%\"> ");
+        out.println("<tr> <th>Indice/Reference </th> <th>Nom</th>    <th>Prix</th> <th>Quantite </th>   </tr>");
+  
+            for(int i = 1 ; i <= produit.size() ; i++){
+        out.println("<tr> <th>" + produit.get(i).getId() + "</th><th>" +  produit.get(i).getNom() + "</th><th>" + produit.get(i).getPrix() + "</th><th> " + produit.get(i).getQuantitestock() + "</th></tr>");
+            }
+            out.println("<h1>Servlet magasin at " + FacadeBean.rechercheProduitId(number).getNom() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
