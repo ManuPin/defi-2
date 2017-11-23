@@ -36,11 +36,7 @@ public void init() {
         em.persist(cadre);
         em.persist(cire);
     }
-public Collection rechercheParNom( String Name){
-        Query q =em.createNamedQuery(Name);
-       
-    
-}
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }
