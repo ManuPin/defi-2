@@ -5,9 +5,11 @@
  */
 package magasin;
 
+import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -34,6 +36,11 @@ public void init() {
         em.persist(cadre);
         em.persist(cire);
     }
+public Collection rechercheParNom( String Name){
+        Query q =em.createNamedQuery(Name);
+       
+    
+}
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }
