@@ -4,9 +4,17 @@
         <servlet-name>magasin</servlet-name>
         <servlet-class>magasin.magasin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Init</servlet-name>
+        <servlet-class>magasin.Init</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>magasin</servlet-name>
         <url-pattern>/magasin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Init</servlet-name>
+        <url-pattern>/Init</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

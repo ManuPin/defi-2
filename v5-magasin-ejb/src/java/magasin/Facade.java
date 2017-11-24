@@ -6,6 +6,7 @@
 package magasin;
 
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,6 +37,15 @@ public void init() {
         em.persist(cadre);
         em.persist(cire);
     }
+public Produit rechercheProduitId (Long id) {
+    Produit monproduit = em.find(Produit.class, id);
+    return monproduit;
+}
+public List<Produit> ensembleProduit(){
+   Query query = em.createQuery("SELECT c FROM Produit c");
+   List<Produit> produit = query.getResultList();
+   return produit;
+}
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

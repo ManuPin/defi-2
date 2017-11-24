@@ -5,6 +5,7 @@
  */
 package magasin;
 
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -14,4 +15,6 @@ import javax.ejb.Local;
 @Local
 public interface FacadeLocal {
         public void init();
+        public Produit rechercheProduitId (Long id);
+        public List<Produit> ensembleProduit();
 }
