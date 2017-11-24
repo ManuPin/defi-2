@@ -46,7 +46,11 @@ public List<Produit> ensembleProduit(){
    List<Produit> produit = query.getResultList();
    return produit;
 }
-
+public void modifyStockQuantite (Long id, Integer quantite){
+   //mise a jour quantite de stock et le faire persister.
+   Produit monproduit = em.find(Produit.class, id);
+  monproduit.setQuantitestock(quantite);
+}
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }
