@@ -30,7 +30,7 @@ public void init() {
         Produit enfumoire = new Produit("enfumoire", 20 , 20) ;
         Produit cire = new Produit("cire", 20 , 200) ;
         
-        em.persist(cire);
+        em.persist(gele);
         em.persist(miel);
         em.persist(ruche);
         em.persist(ruchette);
@@ -41,8 +41,14 @@ public Produit rechercheProduitId (Long id) {
     Produit monproduit = em.find(Produit.class, id);
     return monproduit;
 }
+public List<Produit> rechercheProduitNom(String nom){
+   Query query = em.createQuery("SELECT c FROM Produit c ORDER BY c.id WHERE c.nom=:param");
+   query.setParameter("param", nom);
+   List<Produit> produit = query.getResultList();
+   return produit;
+}
 public List<Produit> ensembleProduit(){
-   Query query = em.createQuery("SELECT c FROM Produit c");
+   Query query = em.createQuery("SELECT c FROM Produit c ORDER BY c.id");
    List<Produit> produit = query.getResultList();
    return produit;
 }

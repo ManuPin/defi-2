@@ -8,6 +8,10 @@
         <servlet-name>Init</servlet-name>
         <servlet-class>magasin.Init</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RechercheProduit</servlet-name>
+        <servlet-class>magasin.RechercheProduit</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>magasin</servlet-name>
         <url-pattern>/magasin</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>Init</servlet-name>
         <url-pattern>/Init</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RechercheProduit</servlet-name>
+        <url-pattern>/RechercheProduit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

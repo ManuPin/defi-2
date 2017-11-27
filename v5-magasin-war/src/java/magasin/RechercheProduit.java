@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Formation16
  */
-public class magasin extends HttpServlet {
+public class RechercheProduit extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,42 +36,30 @@ public class magasin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            long number = 651;
-            Integer quantite = 115;
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet magasin</title>");            
+            out.println("<title>Servlet RechercheProduit</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet magasin at " + request.getContextPath() + "</h1>");
-//            FacadeBean.init();
-//            out.println("<h1>Servlet magasin at " + request.getContextPath() + "</h1>");
 //            FacadeBean.rechercheProduitId(number);
-//            out.println("<h1>Servlet magasin at " + FacadeBean.rechercheProduitId(number).getNom() + "</h1>");
-//              out.println("<h1>Servlet magasin at " + FacadeBean.rechercheProduitId(number).getQuantitestock() + "</h1>");
-    
-              List<Produit> produit = FacadeBean.ensembleProduit();
-            
+            List<Produit> produit = FacadeBean.ensembleProduit();
         out.println(" <style>table,th,td{border : 1px solid black;border-collapse:collapse;}</style> <table style=\"width:100%\"> ");
         out.println("<tr> <th>Indice/Reference </th> <th>Nom</th>    <th>Prix</th> <th>Quantite </th>   </tr>");
-        
-  FacadeBean.modifyStockQuantite(number, quantite);
-  out.println("<h1>Servlet magasin at " + FacadeBean.rechercheProduitId(number).getQuantitestock() + "</h1>");
+   
+             produit.forEach(produ-> {
+             out.println("<tr> <th>" + produ.getId() + "</th><th>" +  produ.getNom() + "</th><th>" + produ.getPrix() + "</th><th> " + produ.getQuantitestock() + "</th></tr>");
+             });
+        out.println("    <form action=\"/RechercheProduit\">");
+        out.println("Produit : <input type=\"text\" list=\"listProduit\" name=\"link\">");
+        out.println("<datalist id=\"listProduit\">");
   produit.forEach(produ-> {
-  out.println("<tr> <th>" + produ.getId() + "</th><th>" +  produ.getNom() + "</th><th>" + produ.getPrix() + "</th><th> " + produ.getQuantitestock() + "</th></tr>");
+  out.println("<option label=" +produ.getNom()+ " value="+ produ.getNom() +">");
   });
-//            for(Integer i = 0 ; i <= produit.size() ; i++ ){
-// for(Integer i  : produit.size() )
-//  {
-//        out.println("<tr> <th>" + produit.get(i).getId() + "</th><th>" +  produit.get(i).getNom() + "</th><th>" + produit.get(i).getPrix() + "</th><th> " + produit.get(i).getQuantitestock() + "</th></tr>");
-//            }
-//            out.println("test");
-//             out.println("<h1>Servlet magasin at " +" FacadeBean.rechercheProduitId(number).getNom() " + "</h1>");
-//           out.println("<h1>Servlet magasin at " + FacadeBean.rechercheProduitId(number).getNom() + "</h1>");
-//            FacadeBean.modifyStockQuantite(number, quantite);
-//           out.println("<h1>Servlet magasin at " + FacadeBean.rechercheProduitId(number).getQuantitestock() + "</h1>");
-//     out.println("test");
+
+  out.println("</datalist>");
+  out.println("<input type=\"submit\">");
+out.println("</form>");
             out.println("</body>");
             out.println("</html>");
         }

@@ -17,4 +17,6 @@ public interface FacadeLocal {
         public void init();
         public Produit rechercheProduitId (Long id);
         public List<Produit> ensembleProduit();
+        public void modifyStockQuantite (Long id, Integer quantite);
+        public List<Produit> rechercheProduitNom(String nom);
 }
