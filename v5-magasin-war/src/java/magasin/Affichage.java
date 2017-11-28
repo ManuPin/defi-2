@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Formation16
  */
-public class magasin extends HttpServlet {
+public class Affichage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,60 +32,33 @@ public class magasin extends HttpServlet {
      */
     @EJB
     private FacadeLocal FacadeBean;
-    @EJB
     private PanierLocal PanierBean;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-             HttpSession session = request.getSession(true);
-             List<Produit> produit = FacadeBean.ensembleProduit();
-            session.setAttribute("listeProduit", produit);
             /* TODO output your page here. You may use following sample code. */
-//            HttpSession session = request.getSession(true);
-//            session.getAttribute("panier");
-                       if ((request.getParameter("panier") != null)){
-                           String NumProduit = request.getParameter("panier");
-//                           //int numprod = Integer.parseInt (NumProduit);
-                           long numprod = Long.parseLong(NumProduit);
-                           out.println(numprod);
-                    PanierBean.addproduit(FacadeBean.rechercheProduitId(numprod));                           
-                          out.println(FacadeBean.rechercheProduitId(numprod).getNom());
-                           List<ElementPanier> sespanier = PanierBean.getPanier();
-                           out.println(numprod);
-                           session.setAttribute("sespanier",sespanier);
-//                           
-               this.getServletContext().getRequestDispatcher( "/WEB-INF/Affichage.jsp").forward( request, response );    
-            }
-           else{
-              this.getServletContext().getRequestDispatcher( "/WEB-INF/Affichage.jsp").forward( request, response );
-           }
-                       
-            long number = 751;
-            Integer quantite = 115;
+            HttpSession session = request.getSession(true);
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet magasin</title>");            
+            out.println("<title>Servlet Affichage</title>");            
             out.println("</head>");
             out.println("<body>");
-//            FacadeBean.rechercheProduitId(number);
-//            out.println("<h1>Servlet magasin at " + FacadeBean.rechercheProduitId(number).getNom() + "</h1>");
-//              out.println("<h1>Servlet magasin at " + FacadeBean.rechercheProduitId(number).getQuantitestock() + "</h1>");
-//    this.getServletContext().getRequestDispatcher( "/Affichage").forward( request, response );
-//    this.getServletContext().getRequestDispatcher( "/WEB-INF/Affichage.jsp").forward( request, response );
-//              List<Produit> produit = FacadeBean.ensembleProduit();
-            
-        out.println(" <style>table,th,td{border : 1px solid black;border-collapse:collapse;}</style> <table style=\"width:100%\"> ");
-        out.println("<tr> <th>Indice/Reference </th> <th>Nom</th>    <th>Prix</th> <th>Quantite </th>   </tr>");
+           
+  List<Produit> produit = FacadeBean.ensembleProduit();
+ session.setAttribute("listeProduit", produit);
  
-  FacadeBean.modifyStockQuantite(number, quantite);
-//  out.println("<h1>Servlet magasin at " + FacadeBean.rechercheProduitId(number).getQuantitestock() + "</h1>");
+//  List<ElementPanier> elementPanier = PanierBean.getPanier();
+  out.println(" <style>table,th,td{border : 1px solid black;border-collapse:collapse;}</style> <table style=\"width:100%\"> ");
+  out.println("<tr> <th>Indice/Reference </th> <th>Nom</th>    <th>Prix</th> <th>Quantite </th> <th>Commande </th>  </tr>");
   produit.forEach(produ-> {
-  out.println("<tr> <th>" + produ.getId() + "</th><th>" +  produ.getNom() + "</th><th>" + produ.getPrix() + "</th><th> " + produ.getQuantitestock() + "</th></tr>");
+  
+  out.println("<tr> <th>" + produ.getId() + "</th><th>" +  produ.getNom() + "</th><th>" + produ.getPrix() + "</th><th> " + produ.getQuantitestock() + "</th><th> " + "<a href=\"/magasin?panier=" + produ.getId()  + "\"> +1 </a> </tr>");
   });
-          out.println("</body>");
+            out.println("</body>");                                                                                                                                                     
             out.println("</html>");
+             this.getServletContext().getRequestDispatcher( "/WEB-INF/Affichage.jsp").forward( request, response );
         }
     }
 

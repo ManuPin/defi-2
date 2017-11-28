@@ -12,6 +12,10 @@
         <servlet-name>RechercheProduit</servlet-name>
         <servlet-class>magasin.RechercheProduit</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Affichage</servlet-name>
+        <servlet-class>magasin.Affichage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>magasin</servlet-name>
         <url-pattern>/magasin</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>RechercheProduit</servlet-name>
         <url-pattern>/RechercheProduit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Affichage</servlet-name>
+        <url-pattern>/Affichage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
