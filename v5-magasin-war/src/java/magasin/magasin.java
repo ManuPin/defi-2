@@ -52,12 +52,14 @@ public class magasin extends HttpServlet {
                     PanierBean.addproduit(FacadeBean.rechercheProduitId(numprod));                           
                           out.println(FacadeBean.rechercheProduitId(numprod).getNom());
                            List<ElementPanier> sespanier = PanierBean.getPanier();
-                           out.println(numprod);
+                           out.println("tetetete");
                            session.setAttribute("sespanier",sespanier);
 //                           
                this.getServletContext().getRequestDispatcher( "/WEB-INF/Affichage.jsp").forward( request, response );    
+//this.getServletContext().getRequestDispatcher( "/Affichage").forward( request, response );    
             }
            else{
+// this.getServletContext().getRequestDispatcher( "/Affichage").forward( request, response );                          
               this.getServletContext().getRequestDispatcher( "/WEB-INF/Affichage.jsp").forward( request, response );
            }
                        
@@ -84,6 +86,14 @@ public class magasin extends HttpServlet {
   produit.forEach(produ-> {
   out.println("<tr> <th>" + produ.getId() + "</th><th>" +  produ.getNom() + "</th><th>" + produ.getPrix() + "</th><th> " + produ.getQuantitestock() + "</th></tr>");
   });
+List<ElementPanier> sepanier = PanierBean.getPanier();
+
+
+
+sepanier.forEach(pan-> {
+  out.println("<tr> <th>" + pan.getProduit().getNom() + "</th><th>" +  pan.getQuantiter() + "</th> </tr>");
+  });
+
           out.println("</body>");
             out.println("</html>");
         }
