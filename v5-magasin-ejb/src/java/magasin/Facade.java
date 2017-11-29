@@ -57,6 +57,7 @@ public void modifyStockQuantite (Long id, Integer quantite){
    Produit monproduit = em.find(Produit.class, id);
   monproduit.setQuantitestock(quantite);
 }
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }
