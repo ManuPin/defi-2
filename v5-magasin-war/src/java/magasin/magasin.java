@@ -49,7 +49,8 @@ public class magasin extends HttpServlet {
 //                           //int numprod = Integer.parseInt (NumProduit);
                            long numprod = Long.parseLong(NumProduit);
                            out.println(numprod);
-                    PanierBean.addproduit(FacadeBean.rechercheProduitId(numprod));                           
+                    PanierBean.addproduit(FacadeBean.rechercheProduitId(numprod));    
+                    
                           out.println(FacadeBean.rechercheProduitId(numprod).getNom());
                            List<ElementPanier> sespanier = PanierBean.getPanier();
                            out.println("tetetete");
@@ -59,6 +60,10 @@ public class magasin extends HttpServlet {
 //this.getServletContext().getRequestDispatcher( "/Affichage").forward( request, response );    
             }
            else{
+//                           if ((request.getParameter("reset") != null)){
+//                               PanierBean.clear();
+//                               request.;
+//                           }
 // this.getServletContext().getRequestDispatcher( "/Affichage").forward( request, response );                          
               this.getServletContext().getRequestDispatcher( "/WEB-INF/Affichage.jsp").forward( request, response );
            }
