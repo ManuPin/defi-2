@@ -14,14 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import magasin.Panier;
 
 /**
- *
- * 
+ * Class pour initialiser ou mettre a jour la quantite de stock
  */
-public class magasin extends HttpServlet {
-
+public class init extends HttpServlet {
+@EJB
+private FacadeLocal FacadeBean;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,37 +30,36 @@ public class magasin extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @EJB
-    private FacadeLocal FacadeBean;
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+       
         HttpSession session = request.getSession(true);
 
         
         List<Produit> produit = FacadeBean.ensembleProduit();
         session.setAttribute("listeProduit", produit);
-            
-            if ((request.getParameter("panier") != null)){
-                long numprod = Long.parseLong(request.getParameter("panier"));
-                if ( session.getAttribute("sespanier") == null ){ 
-                Panier sespanier = new Panier(FacadeBean.rechercheProduitId(numprod),1);
-               session.setAttribute("sespanier",sespanier);
-                }
-                else {
-                  Panier sespanier =  (Panier) session.getAttribute("sespanier");
-                   sespanier.addproduit(FacadeBean.rechercheProduitId(numprod));
-                }
-                       
-               this.getServletContext().getRequestDispatcher( "/WEB-INF/Affichage.jsp").forward( request, response );    
-            }
-           else{
-             this.getServletContext().getRequestDispatcher( "/WEB-INF/Affichage.jsp").forward( request, response );
-           }
-                               
-                               
+        
+        
+                 if ((request.getParameter("action") != null)){
+            String Action = request.getParameter("action");
+            if (Action.contentEquals("Cancel")){session.invalidate();}
+            if (Action.contentEquals("Init")){ FacadeBean.init();}
        }
+                 if ((request.getParameter("Produitstock") != null)){
+                    long IdProduit =  Long.parseLong(request.getParameter("Produitstock"));
+                    Integer Quantite = Integer.valueOf(request.getParameter("valeur"));
+                    try {FacadeBean.modifyStockQuantite(IdProduit, Quantite);
+                    
+                    }catch(Exception ex){
+                        this.getServletContext().getRequestDispatcher( "/WEB-INF/miseajour.jsp").forward( request, response );
+                    }
+                 }
+       this.getServletContext().getRequestDispatcher( "/WEB-INF/miseajour.jsp").forward( request, response );   
+      
+       
+      }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -90,13 +88,8 @@ public class magasin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        
-         if ((request.getParameter("action") != null)){
-            String Action = request.getParameter("action");
-            if (Action.contentEquals("Cancel")){session.invalidate();}
-            if (Action.contentEquals("Commande")){ commande(request, response);}
-       }
 
+        
         processRequest(request, response);
     }
 
@@ -109,32 +102,5 @@ public class magasin extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
-protected void commande (HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-    
-    HttpSession session = request.getSession(true);
-           if ( session.getAttribute("sespanier") == null ){  }
-            else{
-            Panier sespanier =  (Panier) session.getAttribute("sespanier");
-            List<ElementPanier> panier = sespanier.getPanier();
-            
-    if (sespanier.quantiteSuperieurStock()){
-        try {
-            for(ElementPanier element : panier){
-        FacadeBean.CommandeQuantiteProduit(element.getProduit().getId(), element.getQuantiter());
-            }
-        
-        }catch(Exception ex) {
-           this.getServletContext().getRequestDispatcher( "/WEB-INF/problemeDeStock.jsp").forward( request, response );
-       }
-    }
-    else{
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/problemeDeStock.jsp").forward( request, response );
-    }
-        
-           
-this.getServletContext().getRequestDispatcher( "/WEB-INF/commande.jsp").forward( request, response );
-           }          
-}
+
 }

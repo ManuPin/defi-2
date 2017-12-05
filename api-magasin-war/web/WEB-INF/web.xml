@@ -8,6 +8,10 @@
         <servlet-name>commande</servlet-name>
         <servlet-class>magasin.commande</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>init</servlet-name>
+        <servlet-class>magasin.init</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>magasin</servlet-name>
         <url-pattern>/magasin</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>commande</servlet-name>
         <url-pattern>/commande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>init</servlet-name>
+        <url-pattern>/init</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

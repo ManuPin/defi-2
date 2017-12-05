@@ -10,13 +10,14 @@ import javax.ejb.Local;
 
 /**
  *
- * @author Formation16
+ * FacadeLocal, permet d'affiche les methodes de Facade
  */
 @Local
 public interface FacadeLocal {
+        public void init();
         public Produit rechercheProduitId (Long id);
         public List<Produit> ensembleProduit();
-        public void modifyStockQuantite (Long id, Integer quantite);
+        public void modifyStockQuantite (Long id, Integer quantite)throws Exception;
         public List<Produit> rechercheProduitNom(String nom);
         public void CommandeQuantiteProduit (Long id, Integer quantite)throws Exception;
 }

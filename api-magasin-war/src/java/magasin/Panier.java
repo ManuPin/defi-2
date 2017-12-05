@@ -7,9 +7,7 @@ package magasin;
 
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.Objects;
-//import javax.annotation.PostConstruct;
-//import javax.annotation.PreDestroy;
+
 
 /**
  * Panier constituer de liste d'elementPanier : Produit et quantite

@@ -31,9 +31,7 @@ public class commande extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-             
-             HttpSession session = request.getSession(true);
+          HttpSession session = request.getSession(true);
            if ( session.getAttribute("sespanier") == null ){  }
             else{
             Panier sespanier =  (Panier) session.getAttribute("sespanier");
@@ -42,7 +40,6 @@ public class commande extends HttpServlet {
     if (!sespanier.quantiteSuperieurStock()){
         try {
             for(ElementPanier element : panier){
-//                out.println("<h1>Servlet magasin at " + element.getProduit().getNom() + "  " + element.getQuantiter() + "</h1>");
                 FacadeBean.CommandeQuantiteProduit(element.getProduit().getId(), element.getQuantiter());
             }
         
@@ -53,24 +50,10 @@ public class commande extends HttpServlet {
     else{
         this.getServletContext().getRequestDispatcher( "/WEB-INF/problemeDeStock.jsp").forward( request, response );
     }
-        
-           
+
 this.getServletContext().getRequestDispatcher( "/WEB-INF/commande.jsp").forward( request, response );
            }  
-    
-                 
-           try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet magasin</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet magasin at " + request.getContextPath() + "</h1>");
-           out.println("</body>");
-            out.println("</html>");
-                }
+
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
