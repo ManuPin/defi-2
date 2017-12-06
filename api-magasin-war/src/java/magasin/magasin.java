@@ -94,7 +94,7 @@ public class magasin extends HttpServlet {
          if ((request.getParameter("action") != null)){
             String Action = request.getParameter("action");
             if (Action.contentEquals("Cancel")){session.invalidate();}
-            if (Action.contentEquals("Commande")){ commande(request, response);}
+//            if (Action.contentEquals("Commande")){ commande(request, response);}
        }
 
         processRequest(request, response);
@@ -110,31 +110,31 @@ public class magasin extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     
-protected void commande (HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-    
-    HttpSession session = request.getSession(true);
-           if ( session.getAttribute("sespanier") == null ){  }
-            else{
-            Panier sespanier =  (Panier) session.getAttribute("sespanier");
-            List<ElementPanier> panier = sespanier.getPanier();
-            
-    if (sespanier.quantiteSuperieurStock()){
-        try {
-            for(ElementPanier element : panier){
-        FacadeBean.CommandeQuantiteProduit(element.getProduit().getId(), element.getQuantiter());
-            }
-        
-        }catch(Exception ex) {
-           this.getServletContext().getRequestDispatcher( "/WEB-INF/problemeDeStock.jsp").forward( request, response );
-       }
-    }
-    else{
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/problemeDeStock.jsp").forward( request, response );
-    }
-        
-           
-this.getServletContext().getRequestDispatcher( "/WEB-INF/commande.jsp").forward( request, response );
-           }          
-}
+//protected void commande (HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException{
+//    
+//    HttpSession session = request.getSession(true);
+//           if ( session.getAttribute("sespanier") == null ){  }
+//            else{
+//            Panier sespanier =  (Panier) session.getAttribute("sespanier");
+//            List<ElementPanier> panier = sespanier.getPanier();
+//            
+//    if (sespanier.quantiteSuperieurStock()){
+//        try {
+//            for(ElementPanier element : panier){
+//        FacadeBean.CommandeQuantiteProduit(element.getProduit().getId(), element.getQuantiter());
+//            }
+//        
+//        }catch(Exception ex) {
+//           this.getServletContext().getRequestDispatcher( "/WEB-INF/problemeDeStock.jsp").forward( request, response );
+//       }
+//    }
+//    else{
+//        this.getServletContext().getRequestDispatcher( "/WEB-INF/problemeDeStock.jsp").forward( request, response );
+//    }
+//        
+//           
+//this.getServletContext().getRequestDispatcher( "/WEB-INF/commande.jsp").forward( request, response );
+//           }          
+//}
 }
