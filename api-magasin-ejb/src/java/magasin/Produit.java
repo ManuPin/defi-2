@@ -44,51 +44,85 @@ public class Produit implements Serializable {
     @Size(max = 255)
     @Column(length = 255)
     private String nom;
-    private Integer prix;
+    private Float prix;
     private Integer quantitestock;
-
+/**
+ * Constructeur sans argument
+ */
     public Produit() {
     }
-
-    public Produit(String nom, Integer prix, Integer quantitestock) {
+/**
+ * Constructeur avec comme argument String nom, Integer prix, Integer quantitestock
+ * @param nom
+ * @param prix
+ * @param quantitestock 
+ */
+    public Produit(String nom, Float prix, Integer quantitestock) {
         this.nom = nom;
         this.prix = prix;
         this.quantitestock = quantitestock;
     }
     
-
+/**
+ * Constructeur avec unique parametre l'Id du porduit
+ * @param id 
+ */
     public Produit(Long id) {
         this.id = id;
     }
-
+/**
+ * retourne l'id de l'objet
+ * @return 
+ */
     public Long getId() {
         return id;
     }
-
+/**
+ * change l'id de l'objet
+ * @param id 
+ */
     public void setId(Long id) {
         this.id = id;
     }
-
+/**
+ * retourne le nom de l'objet
+ * @return 
+ */
     public String getNom() {
         return nom;
     }
-
+/**
+ * change le nom de l'objet produi
+ * @param nom 
+ */
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    public Integer getPrix() {
+/**
+ * retourne le prix de l'objet
+ * @return 
+ */
+    public Float getPrix() {
         return prix;
     }
-
-    public void setPrix(Integer prix) {
+/**
+ * met à jour le prix du porduit 
+ * @param prix 
+ */
+    public void setPrix(Float prix) {
         this.prix = prix;
     }
-
+/**
+ * retourne la quantite de produit en stock
+ * @return 
+ */
     public Integer getQuantitestock() {
         return quantitestock;
     }
-
+/**
+ * met à jour la quantite de produit en stock
+ * @param quantitestock 
+ */
     public void setQuantitestock(Integer quantitestock) {
         this.quantitestock = quantitestock;
     }
@@ -112,7 +146,10 @@ public class Produit implements Serializable {
         }
         return true;
     }
-
+/**
+ * 
+ * @return 
+ */
     @Override
     public String toString() {
         return "magasin.Produit[ id=" + id + " ]";

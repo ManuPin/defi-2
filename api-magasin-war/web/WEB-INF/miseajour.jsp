@@ -24,8 +24,7 @@
 <% 
     List<Produit> produit = (List) session.getAttribute("listeProduit");
     for (Produit produ : produit){
-  //  out.println("<tr> <th>" + produ.getId() + "</th><th>" +  produ.getNom() + "</th><th>" + produ.getPrix() + "</th><th> " + produ.getQuantitestock() + "</th><th> <form action=\"init\" target=\"_blank\" method=\"POST\" > <input type=\"text\" name=\"" + produ.getId() + "\" value=\""+ produ.getQuantitestock() + "\"> <input type=\"submit\"> </form>  </tr>");
-    out.println("<tr> <th>" + produ.getId() + "</th><th>" +  produ.getNom() + "</th><th>" + produ.getPrix() + "</th><th> " + produ.getQuantitestock() + "</th><th> <form action=\"init\" target=\"_blank\" method=\"POST\" > <input type=\"text\" name=\"Produitstock\" value=\"" + produ.getId() + "\" > <input type=\"text\" name=\"valeur\" value=\""+ produ.getQuantitestock() + "\"> <input type=\"submit\"> </form>  </tr>");
+     out.println("<tr> <th>" + produ.getId() + "</th><th>" +  produ.getNom() + "</th><th>" + produ.getPrix() + "</th><th> " + produ.getQuantitestock() + "</th><th> <form action=\"init\" target=\"_blank\" method=\"POST\" > <input type=\"text\" name=\"Produitstock\" value=\"" + produ.getId() + "\" > <input type=\"text\" name=\"valeur\" value=\""+ produ.getQuantitestock() + "\"> <input type=\"submit\"> </form>  </tr>");
   }
 
 %>
@@ -52,14 +51,11 @@
 %>
         </p>
        <h2>  <p> 
-<form action="commande" target="_blank" method="POST">
-<input type="submit" name="action" value="Commande"></p></h2>
-</form> 
 
-<form action="magasin") target="_blank" method="POST">
-<input type="submit" name="action" value="Cancel"></p></h2>
+<form action="magasin" target="_blank" method="POST">
+<input type="submit" name="action" value="Magasin"></p></h2>
 </form> 
-<form action="miseAJour") target="_blank" method="POST">
+<form action="init" target="_blank" method="POST">
 <input type="submit" name="action" value="Init"></p></h2>
 </form>
      </body>

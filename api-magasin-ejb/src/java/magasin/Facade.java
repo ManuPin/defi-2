@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
- *
+ *Class Stateless permet de mettre à jour et de consulter la table des produits 
  * 
  */
 @Stateless
@@ -25,13 +25,13 @@ private EntityManager em;
  * Methode permettant d'initialiser le stock de produit avec la quantite
  */
 public void init() {
-        Produit gele = new Produit("gele royale",55, 15);
-        Produit miel =  new Produit("miel",15, 10);
-        Produit ruche = new Produit("ruche 12 Cadres",1, 12) ;
-        Produit ruchette = new Produit("ruchette 7 Cadres",65, 8) ;
-        Produit cadre = new Produit("cadre", 2 , 180) ;
-        Produit enfumoire = new Produit("enfumoire", 20 , 20) ;
-        Produit cire = new Produit("cire", 20 , 200) ;
+        Produit gele = new Produit("gele royale",55.1f, 15);
+        Produit miel =  new Produit("miel",15.1f, 10);
+        Produit ruche = new Produit("ruche 12 Cadres",1.1f, 12) ;
+        Produit ruchette = new Produit("ruchette 7 Cadres",65.0f, 8) ;
+        Produit cadre = new Produit("cadre", 2.2f , 180) ;
+        Produit enfumoire = new Produit("enfumoire", 20.3f , 20) ;
+        Produit cire = new Produit("cire", 20.2f , 200) ;
         
         em.persist(gele);
         em.persist(miel);

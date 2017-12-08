@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 
 public class commande extends HttpServlet {
 @EJB
-    private FacadeLocal FacadeBean;
+private FacadeLocal FacadeBean;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

@@ -33,8 +33,8 @@ public class ElementPanier {
      * methode retourne pour l'element du panier, son prix * quantite
      * @return 
      */
-   public Integer getSubTotal(){
-        return produit.getPrix()*quantiter;
+   public Float getSubTotal(){      
+        return produit.getPrix()*quantiter.floatValue() ;
     }
    /**
     * Methode permettant de modifier le type de Produit

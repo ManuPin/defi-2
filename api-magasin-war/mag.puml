@@ -1,0 +1,51 @@
+@startuml
+annotation java.lang.Override
+annotation javax.ejb.EJB
+class java.io.IOException
+class java.io.PrintWriter
+class java.util.ArrayList
+class java.util.List
+class javax.servlet.ServletException
+class javax.servlet.http.HttpServlet
+class javax.servlet.http.HttpServletRequest
+class javax.servlet.http.HttpServletResponse
+class javax.servlet.http.HttpSession
+class magasin.ElementPanier
+class magasin.Panier
+class magasin.commande
+class magasin.init
+class magasin.magasin
+magasin.Panier ..> java.util.ArrayList
+magasin.Panier ..> java.util.List
+magasin.commande ..> java.lang.Override
+magasin.commande ..> javax.ejb.EJB
+magasin.commande ..> java.io.IOException
+magasin.commande ..> java.io.PrintWriter
+magasin.commande ..> java.util.List
+magasin.commande ..> javax.servlet.ServletException
+magasin.commande --|> javax.servlet.http.HttpServlet
+magasin.commande ..> javax.servlet.http.HttpServletRequest
+magasin.commande ..> javax.servlet.http.HttpServletResponse
+magasin.commande ..> javax.servlet.http.HttpSession
+magasin.init ..> java.lang.Override
+magasin.init ..> javax.ejb.EJB
+magasin.init ..> java.io.IOException
+magasin.init ..> java.io.PrintWriter
+magasin.init ..> java.util.List
+magasin.init ..> javax.servlet.ServletException
+magasin.init --|> javax.servlet.http.HttpServlet
+magasin.init ..> javax.servlet.http.HttpServletRequest
+magasin.init ..> javax.servlet.http.HttpServletResponse
+magasin.init ..> javax.servlet.http.HttpSession
+magasin.magasin ..> java.lang.Override
+magasin.magasin ..> javax.ejb.EJB
+magasin.magasin ..> java.io.IOException
+magasin.magasin ..> java.io.PrintWriter
+magasin.magasin ..> java.util.List
+magasin.magasin ..> javax.servlet.ServletException
+magasin.magasin --|> javax.servlet.http.HttpServlet
+magasin.magasin ..> javax.servlet.http.HttpServletRequest
+magasin.magasin ..> javax.servlet.http.HttpServletResponse
+magasin.magasin ..> javax.servlet.http.HttpSession
+magasin.magasin ..> magasin.Panier
+@enduml

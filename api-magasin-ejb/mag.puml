@@ -1,0 +1,49 @@
+@startuml
+annotation java.lang.Override
+annotation javax.ejb.Local
+annotation javax.ejb.Stateless
+annotation javax.persistence.Basic
+annotation javax.persistence.Column
+annotation javax.persistence.Entity
+annotation javax.persistence.GeneratedValue
+annotation javax.persistence.Id
+annotation javax.persistence.NamedQueries
+annotation javax.persistence.NamedQuery
+annotation javax.persistence.PersistenceContext
+annotation javax.persistence.Table
+annotation javax.validation.constraints.NotNull
+annotation javax.validation.constraints.Size
+annotation javax.xml.bind.annotation.XmlRootElement
+class java.util.Collection
+class java.util.List
+class javax.persistence.EntityManager
+class javax.persistence.GenerationType
+class javax.persistence.Query
+class magasin.Facade
+class magasin.Produit
+interface java.io.Serializable
+interface magasin.FacadeLocal
+magasin.Facade ..> javax.ejb.Stateless
+magasin.Facade ..> javax.persistence.PersistenceContext
+magasin.Facade ..> java.util.Collection
+magasin.Facade ..> java.util.List
+magasin.Facade ..> javax.persistence.EntityManager
+magasin.Facade ..> javax.persistence.Query
+magasin.Facade --|> magasin.FacadeLocal
+magasin.Produit ..> java.lang.Override
+magasin.Produit ..> javax.persistence.Basic
+magasin.Produit ..> javax.persistence.Column
+magasin.Produit ..> javax.persistence.Entity
+magasin.Produit ..> javax.persistence.GeneratedValue
+magasin.Produit ..> javax.persistence.Id
+magasin.Produit ..> javax.persistence.NamedQueries
+magasin.Produit ..> javax.persistence.NamedQuery
+magasin.Produit ..> javax.persistence.Table
+magasin.Produit ..> javax.validation.constraints.NotNull
+magasin.Produit ..> javax.validation.constraints.Size
+magasin.Produit ..> javax.xml.bind.annotation.XmlRootElement
+magasin.Produit ..> javax.persistence.GenerationType
+magasin.Produit --|> java.io.Serializable
+magasin.FacadeLocal ..> javax.ejb.Local
+magasin.FacadeLocal ..> java.util.List
+@enduml

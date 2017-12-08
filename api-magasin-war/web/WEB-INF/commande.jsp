@@ -31,7 +31,7 @@
      if (sespanier.quantiteSuperieurStock()){out.println("ATTENTION Quantite non presente en stock ");}
        for (ElementPanier lepanier : panier){
          
-       out.println("<tr> <th>" +  lepanier.getProduit().getNom()  +  "</th><th>" +   lepanier.getQuantiter() +  "</th><th>" + (lepanier.getProduit().getQuantitestock()-lepanier.getQuantiter()) +  "</th><th>" + lepanier.getProduit().getPrix() +  "</th><th>" + (lepanier.getProduit().getPrix()*lepanier.getQuantiter()) +"</th> </tr>" );
+       out.println("<tr> <th>" +  lepanier.getProduit().getNom()  +  "</th><th>" +   lepanier.getQuantiter() +  "</th><th>" + (lepanier.getProduit().getQuantitestock()-lepanier.getQuantiter()) +  "</th><th>" + lepanier.getProduit().getPrix() +  "</th><th>" + lepanier.getSubTotal() +"</th> </tr>" );
     }
                             
        out.println("<tr> <th>" +  "Somme : "  +  "</th><th>" + "" + "</th><th>"+   ""+  "</th><th>"  +  "</th><th>" + sespanier.prixTotalPanier() + "</th> </tr>" );

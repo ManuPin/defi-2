@@ -42,7 +42,7 @@ private FacadeLocal FacadeBean;
         session.setAttribute("listeProduit", produit);
         
         
-                 if ((request.getParameter("action") != null)){
+        if ((request.getParameter("action") != null)){
             String Action = request.getParameter("action");
             if (Action.contentEquals("Cancel")){session.invalidate();}
             if (Action.contentEquals("Init")){ FacadeBean.init();}
@@ -51,11 +51,13 @@ private FacadeLocal FacadeBean;
                     long IdProduit =  Long.parseLong(request.getParameter("Produitstock"));
                     Integer Quantite = Integer.valueOf(request.getParameter("valeur"));
                     try {FacadeBean.modifyStockQuantite(IdProduit, Quantite);
-                    
+                    Thread.sleep(4000);
                     }catch(Exception ex){
                         this.getServletContext().getRequestDispatcher( "/WEB-INF/miseajour.jsp").forward( request, response );
                     }
+                    
                  }
+                
        this.getServletContext().getRequestDispatcher( "/WEB-INF/miseajour.jsp").forward( request, response );   
       
        
