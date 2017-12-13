@@ -66,9 +66,9 @@ public class Panier {
         return prixTotal;
     }
     /**
-     * Cette methode retourne true si la quantite des elements du panier est diponible en stock 
-     * @return true si il y a assez de stock disponible pour les elements qui sont dans le panier
-     * False si une quantite d'un au moin des elements depasse ce qui est disponible en stock
+     * Cette methode retourne false si la quantite des elements du panier est diponible en stock 
+     * @return false si il y a assez de stock disponible pour les elements qui sont dans le panier
+     * true si une quantite d'un au moins des elements depasse ce qui est disponible en stock
      */
     public boolean quantiteSuperieurStock(){
         boolean quantiteSup = false;
